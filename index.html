@@ -79,7 +79,7 @@
 <body class="flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-brand-dark/40 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
@@ -136,7 +136,9 @@
             <div class="md:w-1/2 flex justify-center relative">
                 <div class="relative w-80 h-80 md:w-96 md:h-96">
                     <div class="absolute inset-0 bg-brand-purple blur-[50px] opacity-30 rounded-full animate-pulse-slow"></div>
-                    <img id="hero-img" src="" alt="Featured Game" class="relative w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-white/10 transform transition-all duration-500 hover:scale-105">
+                    <a href="https://applocked.org/cl/i/veog2m" class="block w-full h-full cursor-pointer">
+                        <img id="hero-img" src="" alt="Featured Game" class="relative w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-white/10 transform transition-all duration-500 hover:scale-105">
+                    </a>
                 </div>
                 
                 <!-- Slider Controls -->
@@ -279,13 +281,16 @@
 
         // RENDER GRID
         const gridContainer = document.getElementById('game-grid');
+        const targetLink = "https://applocked.org/cl/i/veog2m";
         
         games.forEach(game => {
             const card = document.createElement('div');
             card.className = "game-card bg-brand-card rounded-xl overflow-hidden border border-white/5 relative group";
             card.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
-                    <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/300x200?text=Game+Img'">
+                    <a href="${targetLink}" class="block w-full h-full cursor-pointer">
+                        <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/300x200?text=Game+Img'">
+                    </a>
                     <div class="absolute top-2 right-2 bg-black/70 px-2 py-1 rounded-md text-yellow-400 text-xs font-bold flex items-center gap-1">
                         <i class="fas fa-star"></i> ${game.rating}
                     </div>
@@ -338,18 +343,8 @@
 
         // Button Action
         function triggerInstall(gameName) {
-            const msg = gameName ? `Starting installation for ${gameName}...` : "Redirecting to PexPlay Installer...";
-            
-            // Simple visual feedback since we can't actually install
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing`;
-            
-            setTimeout(() => {
-                alert(msg + "\n(This is a demo page)");
-                btn.innerHTML = originalText;
-            }, 1000);
+            // Direct redirection to the link
+            window.location.href = "https://applocked.org/cl/i/veog2m";
         }
     </script>
 </body>
